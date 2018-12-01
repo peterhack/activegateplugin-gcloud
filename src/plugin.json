@@ -1,0 +1,176 @@
+{
+  "name": "custom.remote.python.gcp",
+  "version": "1.2",
+  "requiredAgentVersion": "1.143.0",
+  "type": "python",
+  "entity": "CUSTOM_DEVICE",
+  "technologies": ["GCP"],
+  "source": {
+    "package": "remote_python_gcp",
+    "className": "RemoteGCPPlugin",
+    "install_requires": [
+      "requests>=2.13.0",
+      "google-api-python-client"
+    ],
+    "activation": "Singleton"
+  },
+  "ui" : {
+    "keymetrics" : [
+      {
+        "key": "compute.googleapis.com-instance-cpu-utilization",
+        "aggregation": "avg",
+        "mergeaggregation": "avg",
+        "displayname": "Instance CPU utilization"
+      },
+      {
+        "key": "compute.googleapis.com-instance-uptime",
+        "aggregation": "avg",
+        "mergeaggregation": "avg",
+        "displayname": "Uptime in seconds"
+      }
+    ],
+    "keycharts" : [
+      {
+        "group": "Keycharts Group",
+        "title": "Keycharts Group",
+        "aggregation": "avg",
+        "mergeaggregation": "avg",
+        "displayname": "Keycharts Group",
+        "series" : [
+          {
+            "key": "compute.googleapis.com-instance-cpu-utilization",
+            "displayname": "Instance CPU utilization",
+            "seriestype": "area",
+            "metricexplanation": "Instance CPU utilization",
+            "stacked": false,
+            "color": "#005073"
+          },
+          {
+            "key": "compute.googleapis.com-instance-uptime",
+            "displayname": "Uptime in seconds",
+            "seriestype": "line",
+            "metricexplanation": "Uptime in seconds",
+            "stacked": false,
+            "color": "#107dac"
+          }
+        ]
+      }
+    ],
+    "charts" : [
+      {
+        "group": "Charts Group",
+        "title": "CPU",
+        "series" : [
+          {
+            "key": "compute.googleapis.com-instance-cpu-utilization",
+            "displayname": "Instance CPU utilization",
+            "seriestype": "area",
+            "metricexplanation": "Instance CPU utilization",
+            "stacked": false,
+            "color": "#005073"
+          }
+        ]
+      },
+      {
+        "group": "Charts Group",
+        "title": "Disk IO",
+        "series" : [
+          {
+            "key": "compute.googleapis.com-instance-disk-read_bytes_count",
+            "displayname": "Disk read bytes",
+            "seriestype": "line",
+            "metricexplanation": "Disk read bytes",
+            "stacked": false,
+            "color": "#107dac"
+          },
+          {
+            "key": "compute.googleapis.com-instance-disk-read_ops_count",
+            "displayname": "Disk read operations",
+            "seriestype": "line",
+            "metricexplanation": "Disk read operations",
+            "stacked": false,
+            "color": "#107dac"
+          },
+          {
+            "key": "compute.googleapis.com-instance-disk-write_bytes_count",
+            "displayname": "Disk write bytes",
+            "seriestype": "line",
+            "metricexplanation": "Disk write bytes",
+            "stacked": false,
+            "color": "#107dac"
+          },
+          {
+            "key": "compute.googleapis.com-instance-disk-write_ops_count",
+            "displayname": "Disk write operations",
+            "seriestype": "line",
+            "metricexplanation": "Disk write operations",
+            "stacked": false,
+            "color": "#107dac"
+          }
+        ]
+      },
+      {
+        "group": "Charts Group",
+        "title": "Network",
+        "series": [
+          {
+            "key": "compute.googleapis.com-instance-network-received_bytes_count",
+            "displayname": "Network received bytes",
+            "seriestype": "line",
+            "metricexplanation": "Network received bytes",
+            "stacked": false,
+            "color": "#107dac"
+          },
+          {
+            "key": "compute.googleapis.com-instance-network-received_packets_count",
+            "displayname": "Network received packets",
+            "seriestype": "line",
+            "metricexplanation": "Network received packets",
+            "stacked": false,
+            "color": "#107dac"
+          },
+          {
+            "key": "compute.googleapis.com-instance-network-sent_bytes_count",
+            "displayname": "Network sent bytes",
+            "seriestype": "line",
+            "metricexplanation": "Network sent bytes",
+            "stacked": false,
+            "color": "#107dac"
+          },
+          {
+            "key": "compute.googleapis.com-instance-network-sent_packets_count",
+            "displayname": "Network sent packets",
+            "seriestype": "line",
+            "metricexplanation": "Network sent packets",
+            "stacked": false,
+            "color": "#107dac"
+          }
+        ]
+      }
+    ]
+  },
+  "metrics": [
+    { "timeseries": { "key": "compute.googleapis.com-instance-cpu-utilization", "unit": "Percent", "dimensions": [], "displayname": "Instance CPU utilization" }, "source": { "type": "Stats", "relative": false}},
+    { "timeseries": { "key": "compute.googleapis.com-instance-disk-read_bytes_count", "unit": "Byte", "dimensions": [], "displayname": "Disk read bytes" }, "source": { "type": "Stats", "relative": false}},
+    { "timeseries": { "key": "compute.googleapis.com-instance-disk-read_ops_count", "unit": "Count", "dimensions": [], "displayname": "Disk read operations" }, "source": { "type": "Stats", "relative": false}},
+    { "timeseries": { "key": "compute.googleapis.com-instance-disk-write_bytes_count", "unit": "Byte", "dimensions": [], "displayname": "Disk write bytes" }, "source": { "type": "Stats", "relative": false}},
+    { "timeseries": { "key": "compute.googleapis.com-instance-disk-write_ops_count", "unit": "Count", "dimensions": [], "displayname": "Disk write operations" }, "source": { "type": "Stats", "relative": false}},
+    { "timeseries": { "key": "compute.googleapis.com-instance-network-received_bytes_count", "unit": "Byte", "dimensions": [], "displayname": "Network received bytes" }, "source": { "type": "Stats", "relative": false}},
+    { "timeseries": { "key": "compute.googleapis.com-instance-network-received_packets_count", "unit": "Count", "dimensions": [], "displayname": "Network received packets" }, "source": { "type": "Stats", "relative": false}},
+    { "timeseries": { "key": "compute.googleapis.com-instance-network-sent_bytes_count", "unit": "Byte", "dimensions": [], "displayname": "Network sent bytes" }, "source": { "type": "Stats", "relative": false}},
+    { "timeseries": { "key": "compute.googleapis.com-instance-network-sent_packets_count", "unit": "Count", "dimensions": [], "displayname": "Network sent packets" }, "source": { "type": "Stats", "relative": false}},
+    { "timeseries": { "key": "compute.googleapis.com-instance-uptime", "unit": "Count", "dimensions": [], "displayname": "Uptime in seconds" }, "source": { "type": "Stats", "relative": false}}
+  ],
+  "properties": [
+    {
+      "key": "project_jwt",
+      "type": "textarea"
+    }
+  ],
+  "configUI" :{
+    "displayName": "Google Cloud Platform",
+	"properties" : [
+      { "key" : "project_jwt", "displayName": "Project JWT" }
+    ]
+  }
+}
